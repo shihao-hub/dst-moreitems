@@ -70,7 +70,7 @@ local function FertilizeTarget(inst, target)
 
     if success then
         print(string.format("[MoneFertilizerBot] Fertilized %s", target.prefab or "unknown"))
-        -- 只消耗肥料
+        -- 注意：官方的 Pickable:Fertilize() 方法不会自动消耗肥料，需要手动消耗
         inst.components.container:ConsumeByName(item.prefab, 1)
     end
 
@@ -161,6 +161,14 @@ local function OnReachDestination(inst, data)
     if data.target.components.inventoryitem ~= nil and data.target.components.container == nil then
         local x, _, z = data.pos:Get()
         inst.Physics:Teleport(x, 0, z)
+    end
+
+    -- 到达施肥目标时触发 fertilizing 状态
+    if inst._fertilize_target and inst._fertilize_target:IsValid() then
+        local dist_sq = inst:GetDistanceSqToInst(inst._fertilize_target)
+        if dist_sq <= 4 then
+            inst.sg:GoToState("fertilizing")
+        end
     end
 end
 

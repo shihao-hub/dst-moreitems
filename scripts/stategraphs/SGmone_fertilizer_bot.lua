@@ -88,7 +88,11 @@ local states =
         timeline =
         {
             FrameEvent(27, function(inst)
-                inst:PerformBufferedAction()
+                if inst._fertilize_target and inst._fertilize_target:IsValid() then
+                    inst:FertilizeTarget(inst._fertilize_target)
+                end
+                inst._fertilize_target = nil
+                inst._last_scan_time = nil -- 施肥完成后立即重置节流，快速寻找下一个目标
             end),
         },
 

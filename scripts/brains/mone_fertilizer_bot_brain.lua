@@ -13,8 +13,15 @@ end)
 
 --------------------------------------------------------------------------------
 
---- 寻找需要施肥的目标
+--- 寻找需要施肥的目标，返回 WALKTO 动作
 local function FindFertilizationAction(inst)
+    -- 节流：避免每 0.25 秒执行一次全图 FindEntities
+    local current_time = GetTime()
+    if inst._last_scan_time and (current_time - inst._last_scan_time) < constants.MONE_FERTILIZER_BOT__SCAN_INTERVAL then
+        return nil
+    end
+    inst._last_scan_time = current_time
+
     -- 检查是否有肥料
     local has_fertilizer = inst.components.container:FindItem(function(item)
         return item:HasTag("mone_fertilizer_bot_fertilizer")
@@ -31,45 +38,11 @@ local function FindFertilizationAction(inst)
         return nil
     end
 
-    -- 获取最近的目标
+    -- 获取最近的目标并存储，供 OnReachDestination 和 stategraph 使用
     local target = targets[1]
+    inst._fertilize_target = target
 
     return BufferedAction(inst, target, ACTIONS.WALKTO, nil, nil, nil, nil, nil, 1)
-end
-
---- 对目标施肥
-local function FertilizeAction(inst)
-    -- 检查是否有肥料
-    local has_fertilizer = inst.components.container:FindItem(function(item)
-        return item:HasTag("mone_fertilizer_bot_fertilizer")
-    end)
-
-    if not has_fertilizer then
-        return nil
-    end
-
-    -- 扫描目标
-    local targets = inst:ScanForFertilizationTargets()
-
-    if #targets == 0 then
-        return nil
-    end
-
-    -- 获取最近的目标
-    local target = targets[1]
-
-    -- 走到目标附近
-    local target_pos = target:GetPosition()
-    local dist_sq = inst:GetDistanceSqToPoint(target_pos)
-    
-    if dist_sq > 4 then
-        return BufferedAction(inst, target, ACTIONS.WALKTO, nil, nil, nil, nil, nil, 1)
-    end
-
-    -- 距离足够近，直接施肥
-    inst:FertilizeTarget(target)
-    
-    return nil -- 返回nil让行为树继续下一个循环
 end
 
 --- 回到出生点
@@ -105,12 +78,9 @@ function MoneFertilizerBotBrain:OnStart()
     {
         WhileNode(function() return not self.inst.sg:HasAnyStateTag("busy") end, "NO BRAIN WHEN BUSY",
             PriorityNode({
-                DoAction(self.inst, FertilizeAction, "Fertilize Target", true),
-                DoAction(self.inst, FindFertilizationAction, "Find Target", true),
+                DoAction(self.inst, FindFertilizationAction, "Find Fertilize Target", true),
                 DoAction(self.inst, GoHomeAction, "Return Home", true),
-                ParallelNode{
-                    StandStill(self.inst),
-                },
+                StandStill(self.inst),
             }, .25)
         ),
     }, .25)
