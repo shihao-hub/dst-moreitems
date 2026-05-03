@@ -303,14 +303,29 @@ local prefabsInfo = {
         describe = "",
         recipe_desc = COMMON_RECIPE_DESC
     },
+    ["mone_stomach_warming_hamburger_copy"] = {
+        names = "暖胃汉堡包(火龙果)",
+        describe = "一次制作十个",
+        recipe_desc = COMMON_RECIPE_DESC
+    },
     ["mone_sanity_hamburger"] = {
         names = "强san素食堡",
         describe = "",
         recipe_desc = COMMON_RECIPE_DESC
     },
+    ["mone_sanity_hamburger_copy"] = {
+        names = "强san素食堡(火龙果)",
+        describe = "一次制作十个",
+        recipe_desc = COMMON_RECIPE_DESC
+    },
     ["mone_lifeinjector_vb"] = {
         names = "强心素食堡",
         describe = "",
+        recipe_desc = COMMON_RECIPE_DESC
+    },
+    ["mone_lifeinjector_vb_copy"] = {
+        names = "强心素食堡(火龙果)",
+        describe = "一次制作十个",
         recipe_desc = COMMON_RECIPE_DESC
     },
     ["mone_wathgrithr_box"] = {

@@ -646,11 +646,16 @@ STRINGS[upper("mone_sanity_hamburger")] = L
         - 为了避免兼容性问题，限制了：仅原版，且排除机器人和小鱼人
         ]]
         or [[]];
---STRINGS[upper("mone_stomach_warming_hamburger_copy")] = L
---        and [[
---        - 一次制作十个
---        ]]
---        or [[]];
+STRINGS[upper("mone_sanity_hamburger_copy")] = L
+        and [[
+        - 用火龙果一次制作十个
+        ]]
+        or [[]];
+STRINGS[upper("mone_stomach_warming_hamburger_copy")] = L
+        and [[
+        - 用火龙果一次制作十个
+        ]]
+        or [[]];
 STRINGS[upper("mone_lifeinjector_vb")] = L
         and [[
         - 【正在计划重构中】
@@ -658,11 +663,11 @@ STRINGS[upper("mone_lifeinjector_vb")] = L
         - 为了避免兼容性问题，限制了：仅原版，且排除旺达和小鱼人
         ]]
         or [[]];
---STRINGS[upper("mone_lifeinjector_vb_copy")] = L
---        and [[
---        - 一次制作十个
---        ]]
---        or [[]];
+STRINGS[upper("mone_lifeinjector_vb_copy")] = L
+        and [[
+        - 用火龙果一次制作十个
+        ]]
+        or [[]];
 STRINGS[upper("mone_honey_ham_stick")] = L
         and [[
         - 一天内效率提高两倍，时间可累加(一次制作五个)

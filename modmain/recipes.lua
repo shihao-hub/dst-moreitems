@@ -1446,7 +1446,7 @@ Recipes[#Recipes + 1] = {
     CanMake = config_data.mone_lifeinjector_vb,
     name = "mone_lifeinjector_vb",
     ingredients = {
-        Ingredient("spoiled_food", 10 * constants.LIFE_INJECTOR_VB__PER_ADD_NUM) -- 20
+        Ingredient("spoiled_food", 10 * constants.LIFE_INJECTOR_VB__PER_ADD_NUM) -- 100
     },
     tech = TECH.NONE,
     config = {
@@ -1455,6 +1455,27 @@ Recipes[#Recipes + 1] = {
         nounlock = nil,
         numtogive = 1,
         builder_tag = nil,
+    },
+    filters = {
+        "MONE_MORE_ITEMS2"
+    }
+};
+
+-- 强心素食堡 (火龙果版)
+Recipes[#Recipes + 1] = {
+    CanMake = config_data.mone_lifeinjector_vb,
+    name = "mone_lifeinjector_vb_copy",
+    ingredients = {
+        Ingredient("dragonfruit", 10 * constants.LIFE_INJECTOR_VB__PER_ADD_NUM)
+    },
+    tech = TECH.NONE,
+    config = {
+        placer = nil,
+        min_spacing = nil,
+        nounlock = nil,
+        numtogive = 10,
+        builder_tag = nil,
+        product = "mone_lifeinjector_vb",
     },
     filters = {
         "MONE_MORE_ITEMS2"
@@ -1467,7 +1488,7 @@ Recipes[#Recipes + 1] = {
     CanMake = config_data.mone_stomach_warming_hamburger,
     name = "mone_stomach_warming_hamburger",
     ingredients = {
-        Ingredient("spoiled_food", 50)
+        Ingredient("spoiled_food", 5 * constants.STOMACH_WARMING_HAMBURGER__PER_ADD_NUM) -- 50
     },
     tech = TECH.NONE,
     config = {
@@ -1482,13 +1503,34 @@ Recipes[#Recipes + 1] = {
     }
 };
 
+-- 暖胃汉堡包 (火龙果版)
+Recipes[#Recipes + 1] = {
+    CanMake = config_data.mone_stomach_warming_hamburger,
+    name = "mone_stomach_warming_hamburger_copy",
+    ingredients = {
+        Ingredient("dragonfruit", 5 * constants.STOMACH_WARMING_HAMBURGER__PER_ADD_NUM)
+    },
+    tech = TECH.NONE,
+    config = {
+        placer = nil,
+        min_spacing = nil,
+        nounlock = nil,
+        numtogive = 10,
+        builder_tag = nil,
+        product = "mone_stomach_warming_hamburger",
+    },
+    filters = {
+        "MONE_MORE_ITEMS2"
+    }
+};
+
 -- 强san素食堡 (回复精神)
 Recipes_Locate["mone_sanity_hamburger"] = true;
 Recipes[#Recipes + 1] = {
     CanMake = config_data.mone_sanity_hamburger,
     name = "mone_sanity_hamburger",
     ingredients = {
-        Ingredient("spoiled_food", 50)
+        Ingredient("spoiled_food", 5 * constants.SANITY_HAMBURGER__PER_ADD_NUM) -- 50
     },
     tech = TECH.NONE,
     config = {
@@ -1497,6 +1539,27 @@ Recipes[#Recipes + 1] = {
         nounlock = nil,
         numtogive = 1,
         builder_tag = nil,
+    },
+    filters = {
+        "MONE_MORE_ITEMS2"
+    }
+};
+
+-- 强san素食堡 (火龙果版)
+Recipes[#Recipes + 1] = {
+    CanMake = config_data.mone_sanity_hamburger,
+    name = "mone_sanity_hamburger_copy",
+    ingredients = {
+        Ingredient("dragonfruit", 5 * constants.SANITY_HAMBURGER__PER_ADD_NUM)
+    },
+    tech = TECH.NONE,
+    config = {
+        placer = nil,
+        min_spacing = nil,
+        nounlock = nil,
+        numtogive = 10,
+        builder_tag = nil,
+        product = "mone_sanity_hamburger",
     },
     filters = {
         "MONE_MORE_ITEMS2"

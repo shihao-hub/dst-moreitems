@@ -413,15 +413,27 @@ M["mone_lifeinjector_vb"] = {
     atlas = "images/foodimages/mone_lifeinjector_vb.xml",
     image = "mone_lifeinjector_vb.tex"
 }
+M["mone_lifeinjector_vb_copy"] = {
+    atlas = "images/foodimages/mone_lifeinjector_vb.xml",
+    image = "mone_lifeinjector_vb.tex"
+}
 
 -- 暖胃汉堡：恢复饥饿值（由 ai 在 2026-02-13 标注，仅供参考）
 M["mone_stomach_warming_hamburger"] = {
     atlas = "images/foodimages/bs_food_33.xml",
     image = "bs_food_33.tex"
 }
+M["mone_stomach_warming_hamburger_copy"] = {
+    atlas = "images/foodimages/bs_food_33.xml",
+    image = "bs_food_33.tex"
+}
 
 -- 理智汉堡：恢复理智值（由 ai 在 2026-02-13 标注，仅供参考）
 M["mone_sanity_hamburger"] = {
+    atlas = "images/foodimages/bs_food_33.xml",
+    image = "bs_food_33.tex"
+}
+M["mone_sanity_hamburger_copy"] = {
     atlas = "images/foodimages/bs_food_33.xml",
     image = "bs_food_33.tex"
 }
